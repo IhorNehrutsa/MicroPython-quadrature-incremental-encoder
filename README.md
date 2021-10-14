@@ -1,5 +1,6 @@
-# MicroPython-quadrature-incremental-encoder
-Interrupt based MicroPython quadrature incremental encoder.
+# MicroPython quadrature incremental encoder
+
+Interrupt-based MicroPython quadrature incremental encoder.
 
 Applicable for hand-driven devices like
 
