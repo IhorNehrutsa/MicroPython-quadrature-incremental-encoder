@@ -8,6 +8,21 @@ Applicable for hand-driven devices like
 
 See also encoder problems and code samples at [Incremental encoders](https://github.com/peterhinch/micropython-samples/blob/master/encoders/ENCODERS.md) by Peter Hinch.
 
+Minimal example:
+```
+from machine import Pin
+
+from encoder_state import Encoder
+
+enc = Encoder(Pin(1), Pin(2))
+value = enc.value()
+while True:
+    val = enc.value()
+    if value != val:
+        value = val
+        print(value)
+```
+
 Quick start:
   * Connect encoder to the MicroPython board.
   * Upload the encoder_state.py to the board.
