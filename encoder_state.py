@@ -5,7 +5,7 @@
 
 
 class Encoder:
-    def __init__(self, pin_a, pin_b, scale=1, x124=2):
+    def __init__(self, pin_a, pin_b, scale=1, x124=4):
         self.pin_a = pin_a
         self.pin_b = pin_b
         self.scale = scale  # Optionally scale encoder rate to distance/angle
