@@ -1,6 +1,7 @@
 # MicroPython quadrature incremental encoder
 
-Interrupt-based MicroPython quadrature incremental encoder.
+MicroPython quadrature incremental encoder based on pin interrupts.  
+It uses [Quadrature decoder state table](https://en.wikipedia.org/wiki/Incremental_encoder#Quadrature_decoder) and state transitions.
 
 Applicable for hand-driven devices like
 
