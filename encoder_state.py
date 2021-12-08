@@ -5,13 +5,13 @@
 
 
 class Encoder:
-    def __init__(self, pin_a, pin_b, scale=1, x124=4):
+    def __init__(self, pin_a, pin_b, x124=4, scale=1):
         self.pin_a = pin_a
         self.pin_b = pin_b
-        self.scale = scale  # Optionally scale encoder rate to distance/angle
         self.x124 = x124
+        self.scale = scale  # Optionally scale encoder rate to distance/angle etc.
 
-        self._pos = 0  # raw counter value
+        self._value = 0  # raw counter value
 
         self._state = 0  # encoder state transitions
         if x124 == 1:
@@ -42,20 +42,25 @@ class Encoder:
             pass
 
     def __repr__(self):
-        return 'Encoder(A={}, B={}, scale={}, x124={})'.format(
-            self.pin_a, self.pin_b, self.scale, self.x124)
+        return 'Encoder(A={}, B={}, x124={}, scale={})'.format(
+            self.pin_a, self.pin_b, self.x124, self.scale)
 
     def _callback(self, pin):
         self._state = ((self._state << 2) + (self.pin_a() << 1) + self.pin_b()) & 0xF
-        self._pos += self._x[self._state]
+        self._value += self._x[self._state]
 
-    def position(self, value=None):
+    def get_value(self):
+        return self._value
+
+    def value(self, value=None):
+        self_value = self._value
         if value is not None:
-            self._pos = round(value / self.scale)
-        return self._pos * self.scale
+            self._value = value
+        return self_value
 
-    def value(self):
-        return self._pos
+    def position(self, position=None):
+        self_position = self._value * self.scale
+        if position is not None:
+            self._value = round(position / self.scale)
+        return self_position
 
-    def set_value(self, value):
-        self._pos = value
