@@ -8,7 +8,7 @@ Applicable for hand-driven devices like
 ![image](https://user-images.githubusercontent.com/70886343/136481028-a9066ee9-d531-4393-8799-ae64ae83eddf.png)
 
 See also encoder problems and code samples at [Incremental encoders](https://github.com/peterhinch/micropython-samples/blob/master/encoders/ENCODERS.md) by Peter Hinch.  
-The internal mechanical operation of a mechanical encoder produces a lot of switch bouncing which is surpressed with a low-pass filters (formed by a 10kΩ and 0.01µF).  
+The internal mechanical operation of a mechanical encoder produces a lot of switch bouncing which is surpressed with a low-pass filters (formed by a 10kΩ and 0.1µF).  
 ![image](https://user-images.githubusercontent.com/70886343/145169567-ed7272a7-2f46-4a17-9b2b-00e46b515844.png)  
 See also manufacturer recommendation https://www.bourns.com/docs/technical-documents/technical-library/sensors-controls/technical-notes/Bourns_enc_sgnl_cond_technote.pdf
 
