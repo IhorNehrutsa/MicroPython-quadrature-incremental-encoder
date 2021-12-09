@@ -53,14 +53,14 @@ class Encoder:
         return self._value
 
     def value(self, value=None):
-        self_value = self._value
+        _value = self._value
         if value is not None:
             self._value = value
-        return self_value
+        return _value
 
     def position(self, position=None):
-        self_position = self._value * self.scale
+        _position = self._value * self.scale
         if position is not None:
             self._value = round(position / self.scale)
-        return self_position
+        return _position
 
