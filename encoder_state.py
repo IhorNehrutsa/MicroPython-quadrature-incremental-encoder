@@ -5,9 +5,9 @@
 
 
 class Encoder:
-    def __init__(self, pin_a, pin_b, x124=4, scale=1):
-        self.pin_a = pin_a
-        self.pin_b = pin_b
+    def __init__(self, phase_a, phase_b, x124=4, scale=1):
+        self.pin_a = phase_a
+        self.pin_b = phase_b
         self.x124 = x124
         self.scale = scale  # Optionally scale encoder rate to distance/angle etc.
 
@@ -21,7 +21,7 @@ class Encoder:
         elif x124 == 4:
             self._x = (0, -1, 1, 0, 1, 0, 0, -1, -1, 0, 0, 1, 0, 1, -1, 0)
         else:
-            raise ValueError("x124 must be from [1, 2, 4]")
+            raise ValueError("multiplier x124 must be from [1, 2, 4]")
 
         try:
             self.pin_a.irq(self._callback, hard=True)
@@ -58,9 +58,9 @@ class Encoder:
             self._value = value
         return _value
 
-    def position(self, position=None):
-        _position = self._value * self.scale
-        if position is not None:
-            self._value = round(position / self.scale)
-        return _position
+    def scaled(self, scaled=None):
+        _scaled = self._value * self.scale
+        if scaled is not None:
+            self._value = round(scaled / self.scale)
+        return _scaled
 
