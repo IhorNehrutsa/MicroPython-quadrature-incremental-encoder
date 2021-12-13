@@ -42,15 +42,12 @@ class Encoder:
             pass
 
     def __repr__(self):
-        return 'Encoder(A={}, B={}, x124={}, scale={})'.format(
+        return 'Encoder(phase_a={}, phase_a={}, x124={}, scale={})'.format(
             self.pin_a, self.pin_b, self.x124, self.scale)
 
     def _callback(self, pin):
         self._state = ((self._state << 2) + (self.pin_a() << 1) + self.pin_b()) & 0xF
         self._value += self._x[self._state]
-
-    def get_value(self):
-        return self._value
 
     def value(self, value=None):
         _value = self._value
@@ -58,9 +55,11 @@ class Encoder:
             self._value = value
         return _value
 
+    def get_value(self):
+        return self._value
+
     def scaled(self, scaled=None):
         _scaled = self._value * self.scale
         if scaled is not None:
             self._value = round(scaled / self.scale)
         return _scaled
-
