@@ -44,7 +44,7 @@ try:
         __clk = clk.value()
         __sw = sw.value()
         __value = enc.value()
-        _position = enc.position()
+        _scaled = enc.scaled()
 
         if (_data != __data) or (_clk != __clk) or (_sw != __sw) or (_value != __value):
             _data = __data
@@ -55,7 +55,7 @@ try:
             if _sw == 0:
                 enc.set_value(PPR * round(enc.value() / PPR))
 
-            print("data={}, clk={}, sw={}, value={:10}, position={:13.2f}".format(_data, _clk, _sw, _value, _position), end='        \r')
+            print("data={}, clk={}, sw={}, value={:10}, scaled={:13.2f}".format(_data, _clk, _sw, _value, _scaled), end='        \r')
 
         sleep(0.1)
 
